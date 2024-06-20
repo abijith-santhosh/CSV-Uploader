@@ -2,7 +2,7 @@
 //Database configuration using mongoose
 import mongoose from "mongoose";
 
-const url = process.env.DB_URL;
+const url = "mongodb://localhost:27017/csv";
 export const connectUsingMongoose = async () => {
   try {
     await mongoose.connect(url, {
