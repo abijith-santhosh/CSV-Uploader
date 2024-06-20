@@ -1,0 +1,57 @@
+<!-- File Upload Section -->
+<section>
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+              <h2 class="text-center mb-4">CSV File Uploader</h2>
+              
+              <!-- File Upload Form -->
+              <form id="uploadForm" action="/" method="post" enctype="multipart/form-data">
+                  <div class="mb-3">
+                      <input type="file" class="form-control bg-dark text-light" id="csvFile" name="csvFile" accept=".csv">
+                  </div>
+                  
+                  <!-- Upload Button -->
+                  <button type="submit" class="btn btn-success btn-block">Upload</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<!-- Uploaded Files Section -->
+<section id="UploadedFiles">
+  <div class="container">
+      <div class="table-responsive mt-4">
+          <table class="table table-hover">
+              <thead class="table-dark text-light">
+                  <tr>
+                      <th>Filename</th>
+                      <th>Uploaded At</th>
+                      <th>Size</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody class="table-danger">
+                  <!-- Example Issue --> 
+                  <% if(files && files.length > 0) { %>
+                      <% files.forEach(file => { %>
+                          <tr>
+                              <td><%= file.name %></td>
+                              <td><%= file.timestamp %></td>
+                              <td><%=file.size%> KB</td>
+                              <td><a href="/details/<%= file.id %>" type="button" class="btn btn-secondary">View</a></td>
+                          </tr>
+                      <% }); %>
+                  <% } else { %>
+                      <tr>
+                          <td colspan="4" class="text-center">No files uploaded yet.</td>
+                      </tr>
+                  <% } %>
+                  <!-- Add more issues as needed -->
+              </tbody>
+          </table>
+      </div>
+  </div>
+</section>
